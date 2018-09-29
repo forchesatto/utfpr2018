@@ -8,23 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import br.edu.utfpr.escola.model.Aluno;
 
-public interface AlunoRepositorio 
-		extends JpaRepository<Aluno, Long> {
+public interface AlunoRepositorio extends JpaRepository<Aluno, Long> {
 
 	List<Aluno> findByNomeLike(String nome);
-	
+
 	@Query("select a from Aluno a where a.dataNascimento > ?1")
 	List<Aluno> dataNascimentoMaiorQue(LocalDate data);
-	
+
 	List<Aluno> dataNascimentoMenorQue(LocalDate data);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

@@ -27,6 +27,16 @@ public class Aluno {
 	private String nome;
 	private LocalDate dataNascimento;
 
+	public Aluno(){
+		
+	}
+	
+	public Aluno(String nome, LocalDate dataNascimento) {
+		super();
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}
