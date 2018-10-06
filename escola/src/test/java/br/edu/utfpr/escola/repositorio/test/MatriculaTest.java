@@ -28,6 +28,7 @@ import br.edu.utfpr.escola.repositorio.AlunoRepositorio;
 import br.edu.utfpr.escola.repositorio.CursoRepositorio;
 import br.edu.utfpr.escola.repositorio.DisciplinaRepositorio;
 import br.edu.utfpr.escola.repositorio.MatriculaRepositorio;
+import br.edu.utfpr.escola.service.MatriculaService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=MainEscola.class)
@@ -53,10 +54,13 @@ public class MatriculaTest {
 	@Autowired
 	private CursoRepositorio cursoRepositorio;
 	
-//	@After
-//	public void after(){
-//		matriculaRepositorio.deleteAll();
-//	}
+	@Autowired
+	private MatriculaService matriculaService;
+	
+	@After
+	public void after(){
+		matriculaRepositorio.deleteAll();
+	}
 	
 	
 	@Test
@@ -69,7 +73,7 @@ public class MatriculaTest {
 		disciplina = disciplinaRepositorio.save(disciplina);
 		
 		Matricula matricula = new Matricula(aluno, disciplina);
-		matricula = matriculaRepositorio.save(matricula);
+		matricula = matriculaService.matricular(matricula);
 		
 		assertNotNull(matricula.getCodigo());
 		
