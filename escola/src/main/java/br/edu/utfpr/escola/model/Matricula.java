@@ -6,9 +6,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
+import javax.persistence.NamedSubgraph;
 import javax.persistence.SequenceGenerator;
 
 @Entity
+
+@NamedEntityGraphs(
+		value={
+			@NamedEntityGraph(name="Matricula.completo", 
+				attributeNodes=
+				{
+				  @NamedAttributeNode("aluno"),
+				  @NamedAttributeNode("disciplina"),
+				  @NamedAttributeNode(value="disciplina",
+				  		subgraph="curso")
+				}, 
+				subgraphs={@NamedSubgraph(name="curso", 
+							attributeNodes=
+								@NamedAttributeNode("curso"))})})
 public class Matricula {
 
 	@Id

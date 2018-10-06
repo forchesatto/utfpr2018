@@ -17,9 +17,7 @@ public interface MatriculaRepositorio extends JpaRepository<Matricula, Long> {
 	List<Matricula> todasMatriculasCompleta();
 	
 	
-	@EntityGraph(attributePaths={"aluno",
-				"disciplina", 
-				"disciplina.curso"})
+	@EntityGraph(value="Matricula.completo")
 	List<Matricula> findAll();
 	
 	@EntityGraph(attributePaths={"aluno",
