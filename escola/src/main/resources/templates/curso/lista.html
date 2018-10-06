@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de curso</title>
+</head>
+<body>
+	
+	<a th:href="@{/curso/novo}">Novo</a>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="curso: ${dados}">
+				<td> <a th:href="@{/curso/visualizar/{codcurso}(codcurso=${curso.codigo})}" 
+						th:text="${curso.codigo}"></a></td>
+				<td th:text="${curso.nome}"/>
+				<td><a th:href="@{/curso/remover/{codcurso}(codcurso=${curso.codigo})}">
+									Excluir</a></td>
+			</tr>		
+		</tbody>
+	</table>
+
+
+
+
+
+</body>
+</html>
