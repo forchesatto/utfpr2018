@@ -1,0 +1,24 @@
+<dataset>
+	<aluno codigo="1" nome="Joaquim" data_nascimento="2000-01-10"/>
+	<aluno codigo="2" nome="Maria" data_nascimento="2005-01-15"/>
+	<aluno codigo="3" nome="Pedro" data_nascimento="1980-04-10"/>
+	
+	<curso codigo="1" nome="TADS"/>
+	<curso codigo="2" nome="ADM"/>
+	
+	<disciplina codigo="1" nome="Algoritmo" curso_codigo="1"/>
+	<disciplina codigo="2" nome="Banco de dados" curso_codigo="1"/>
+	
+	<disciplina codigo="3" nome="TGA" curso_codigo="2"/>
+	<disciplina codigo="4" nome="Custos" curso_codigo="2"/>
+	
+	<matricula codigo="1" aluno_codigo="1" disciplina_codigo="1"/>
+	<matricula codigo="2" aluno_codigo="1" disciplina_codigo="2"/>
+	
+	<matricula codigo="3" aluno_codigo="2" disciplina_codigo="3"/>
+	<matricula codigo="4" aluno_codigo="2" disciplina_codigo="4"/>
+	
+	<matricula codigo="5" aluno_codigo="3" disciplina_codigo="1"/>
+	<matricula codigo="6" aluno_codigo="3" disciplina_codigo="2"/>
+	
+</dataset>
