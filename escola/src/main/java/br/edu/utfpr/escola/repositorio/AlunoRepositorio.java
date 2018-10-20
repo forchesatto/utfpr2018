@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import br.edu.utfpr.escola.model.Aluno;
 
+@RestResource(path="restAluno")
 public interface AlunoRepositorio extends JpaRepository<Aluno, Long> {
 
 	List<Aluno> findByNomeLike(String nome);
