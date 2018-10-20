@@ -8,11 +8,22 @@
 	
 	<form th:action="@{/curso/salvar}" method="post" 
 							th:object="${curso}">
+							
+	<ul>
+		<li th:errors="*"></li>
+	</ul>
+	
+	<ul>
+    		<li th:each="err : ${#fields.errors('all')}" 
+    				th:text="${err}" />
+	</ul>
 	
 		<input type="hidden" th:field="*{codigo}">
 		
 		<label for="nome">Nome:</label>
 		<input type="text" th:field="*{nome}">
+		<span th:if="${#fields.hasErrors('nome')}" 
+					th:errors="*{nome}" ></span>
 	
 		<input type="submit" value="Salvar"/>
 	

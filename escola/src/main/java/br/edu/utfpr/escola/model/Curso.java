@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Curso {
@@ -16,6 +17,7 @@ public class Curso {
 			strategy = GenerationType.SEQUENCE)
 	private Long codigo;
 	
+	@NotEmpty(message="O campo nome não pode ser vazio")
 	@Column(length = 150, nullable = false)
 	private String nome;
 	

@@ -28,7 +28,6 @@ public class Aluno {
 	@Column(length = 150, nullable = false)
 	private String nome;
 	
-	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataNascimento;
 
 	public Aluno(){

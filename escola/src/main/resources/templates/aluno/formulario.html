@@ -15,7 +15,8 @@
 		<input type="text" th:field="*{nome}">
 		
 		<label for="dataNascimento">Data nascimento:</label>
-		<input type="text" th:field="*{dataNascimento}">
+		<input type="date" pattern="dd/mm/yyyy" 
+				th:field="*{dataNascimento}">
 	
 		<input type="submit" value="Salvar"/>
 	

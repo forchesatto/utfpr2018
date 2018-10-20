@@ -13,6 +13,7 @@
 			<tr>
 				<th>Código</th>
 				<th>Nome</th>
+				<th>Data nascimento</th>
 				<th>Excluir</th>
 			</tr>
 		</thead>
@@ -21,7 +22,7 @@
 				<td> <a th:href="@{/aluno/visualizar/{codaluno}(codaluno=${aluno.codigo})}" 
 						th:text="${aluno.codigo}"></a></td>
 				<td th:text="${aluno.nome}"/>
-				<td th:text="${#temporals.format(aluno.dataNascimento, 'dd/MM/yyyy')}"/>
+				<td th:text="${{aluno.dataNascimento}}"/>
 				<td><a th:href="@{/aluno/remover/{codaluno}(codaluno=${aluno.codigo})}">
 									Excluir</a></td>
 			</tr>		

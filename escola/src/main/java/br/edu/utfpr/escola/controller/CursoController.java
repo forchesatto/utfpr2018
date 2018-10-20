@@ -1,12 +1,16 @@
 package br.edu.utfpr.escola.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.utfpr.escola.model.Curso;
 import br.edu.utfpr.escola.repositorio.CursoRepositorio;
@@ -32,7 +36,13 @@ public class CursoController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Curso curso){
+	public String salvar(@Valid Curso curso, 
+			BindingResult erros, Model model, 
+			RedirectAttributes redirect){
+		if(erros.hasErrors()){
+			return "curso/formulario";
+		}
+		redirect.addFlashAttribute("mensagem", "Registro salvo com sucesso");
 		cursoRepositorio.save(curso);
 		return "redirect:/curso/";
 	}
