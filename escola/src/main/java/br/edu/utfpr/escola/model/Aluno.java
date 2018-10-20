@@ -11,6 +11,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @NamedQueries(@NamedQuery(name="Aluno.dataNascimentoMenorQue"
 				, query="select a from Aluno a "
@@ -25,6 +27,8 @@ public class Aluno {
 	
 	@Column(length = 150, nullable = false)
 	private String nome;
+	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataNascimento;
 
 	public Aluno(){

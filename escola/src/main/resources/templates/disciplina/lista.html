@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de disciplina</title>
+</head>
+<body>
+	
+	<a th:href="@{/disciplina/novo}">Novo</a>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>Curso</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="disciplina: ${dados}">
+				<td> <a th:href="@{/disciplina/visualizar/{coddisciplina}
+										(coddisciplina=${disciplina.codigo})}" 
+						th:text="${disciplina.codigo}"></a></td>
+				<td th:text="${disciplina.nome}"/>
+				
+				<td th:text="${disciplina.curso.nome}"/>
+				
+				<td><a th:href="@{/disciplina/remover/{coddisciplina}
+									(coddisciplina=${disciplina.codigo})}">
+									Excluir</a></td>
+			</tr>		
+		</tbody>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

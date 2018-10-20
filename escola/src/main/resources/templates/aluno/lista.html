@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de aluno</title>
+</head>
+<body>
+	
+	<a th:href="@{/aluno/novo}">Novo</a>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="aluno: ${dados}">
+				<td> <a th:href="@{/aluno/visualizar/{codaluno}(codaluno=${aluno.codigo})}" 
+						th:text="${aluno.codigo}"></a></td>
+				<td th:text="${aluno.nome}"/>
+				<td th:text="${#temporals.format(aluno.dataNascimento, 'dd/MM/yyyy')}"/>
+				<td><a th:href="@{/aluno/remover/{codaluno}(codaluno=${aluno.codigo})}">
+									Excluir</a></td>
+			</tr>		
+		</tbody>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
