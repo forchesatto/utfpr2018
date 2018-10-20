@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	
+	<th:block th:fragment="novo(nomeObjeto)">
+		<div class="col-lg-12 text-left">
+			<a class="btn btn-primary" th:href="@{|/${nomeObjeto}/novo|}">Novo</a>
+		</div>
+	</th:block>
+	
+</body>
+</html>
