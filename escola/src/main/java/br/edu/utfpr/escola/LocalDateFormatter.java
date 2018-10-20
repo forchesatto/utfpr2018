@@ -24,8 +24,7 @@ public class LocalDateFormatter implements Formatter<LocalDate> {
 		if(data == null){
 			return null;
 		}
-		return LocalDate.parse(data, 
-				DateTimeFormatter.ofPattern(PATTERN));
+		return LocalDate.parse(data);
 	}
 
 }

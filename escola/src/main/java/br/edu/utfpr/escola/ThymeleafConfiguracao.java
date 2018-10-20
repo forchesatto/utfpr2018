@@ -10,7 +10,7 @@ public class ThymeleafConfiguracao implements WebMvcConfigurer{
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
 		WebMvcConfigurer.super.addFormatters(registry);
-		registry.addConverter(new LocalDateConverter());
+		//registry.addConverter(new LocalDateConverter());
 		
 		registry.addFormatter(new LocalDateFormatter());
 	}
