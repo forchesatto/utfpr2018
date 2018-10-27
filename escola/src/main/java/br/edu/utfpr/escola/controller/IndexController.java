@@ -12,4 +12,21 @@ public class IndexController {
 		model.addAttribute("nome", "luiz");
 		return "index";
 	}
+	
+	@GetMapping("/login")
+	public String login(){
+		return "login";
+	}
+	
+	@GetMapping("/login-error")
+	public String loginError(Model model){
+		model.addAttribute("error-login", true);
+		return "login";
+	}
+	
+	
+	
+	
+	
+	
 }

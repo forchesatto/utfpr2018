@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>UTFPR</title>
 </head>
 <body>
-	testando html alterado
+	Nome do usuário: <div sec:authentication="name"></div>
 	
 	<span th:text="${nome}"></span>
+	
+	
 </body>
 </html>
