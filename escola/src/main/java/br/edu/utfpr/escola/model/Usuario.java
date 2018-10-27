@@ -3,6 +3,7 @@ package br.edu.utfpr.escola.model;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Usuario implements UserDetails {
 	@Column(length = 150, nullable = false)
 	private String password;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	private Collection<Permissao> permissoes;
 	
 	public void addPermissao(Permissao permissao){

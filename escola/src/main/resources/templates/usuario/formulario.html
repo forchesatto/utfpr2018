@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de usuario</title>
+</head>
+<body>
+	
+	<form th:action="@{/usuario/salvar}" method="post" 
+							th:object="${usuario}">
+							
+	<ul>
+		<li th:errors="*"></li>
+	</ul>
+	
+		<input type="hidden" th:field="*{codigo}">
+		
+		<label for="nome">Nome:</label>
+		<input type="text" th:field="*{nome}">
+		
+		<label for="username">Login:</label>
+		<input type="text" th:field="*{username}">
+		
+		<label for="nome">Password:</label>
+		<input type="password" th:field="*{password}">
+		
+		<label for="permissao">Permissao:</label>
+		<select name="codigoPermissao">
+			<option th:each="permissao: ${permissoes}" 
+					th:text="${permissao.authority}" 
+					th:value="${permissao.codigo}"> </option>
+		</select>
+	
+		<input type="submit" value="Salvar"/>
+	
+	</form>
+
+
+
+
+</body>
+</html>

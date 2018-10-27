@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de usuarios</title>
+</head>
+<body>
+	
+	<a th:href="@{/usuario/novo}">Novo</a>
+	
+	<span th:text="${mensagem}"></span>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>Login</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="usuario: ${dados}">
+				<td> <a th:href="@{/usuario/visualizar/{codusuario}(codusuario=${usuario.codigo})}" 
+						th:text="${usuario.codigo}"></a></td>
+				<td th:text="${usuario.nome}"/>
+				<td th:text="${usuario.username}"/>
+				<td><a th:href="@{/usuario/remover/{codusuario}(codusuario=${usuario.codigo})}">
+									Excluir</a></td>
+			</tr>		
+		</tbody>
+	</table>
+
+
+
+
+
+</body>
+</html>
