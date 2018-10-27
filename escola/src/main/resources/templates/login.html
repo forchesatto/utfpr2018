@@ -9,6 +9,8 @@
 	
 	<p th:text="#{bemvindo}"></p>
 	
+	<p th:text="#{errorLogin}" th:if="${errorLogin}"> </p>
+	
 	<form th:action="@{/login}" method="post">
 		<label for="username" th:text="#{username}"></label>
 		<input type="text" name="username" id="username"> <br>

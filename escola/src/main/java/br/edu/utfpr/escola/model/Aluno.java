@@ -11,8 +11,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 @Entity
 @NamedQueries(@NamedQuery(name="Aluno.dataNascimentoMenorQue"
 				, query="select a from Aluno a "
