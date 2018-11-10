@@ -3,31 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <title>Cadastro de disciplina</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}" />
+
+<link rel="stylesheet"
+	th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}">
+
 </head>
 <body>
-	
-	<form th:action="@{/disciplina/salvar}" method="post" 
-							th:object="${disciplina}">
-	
-		<input type="hidden" th:field="*{codigo}">
-		
+
+	<form th:action="@{/disciplina/salvar}" method="post"
+		th:object="${disciplina}">
+
 		<label for="nome">Nome:</label>
+		<input type="hidden" th:field="*{codigo}"> 
 		<input type="text" th:field="*{nome}">
-		
-		<label for="curso">Curso:</label>
-		<select th:field="*{curso}">
-			<option th:each="curso: ${cursos}" 
-					th:text="${curso.nome}" 
-					th:value="${curso.codigo}"> </option>
-		</select>
-		
-	
-		<input type="submit" value="Salvar"/>
-	
+
+		<!-- 		<label for="curso">Curso:</label> -->
+		<!-- 		<select th:field="*{curso}"> -->
+		<!-- 			<option th:each="curso: ${cursos}"  -->
+		<!-- 					th:text="${curso.nome}"  -->
+		<!-- 					th:value="${curso.codigo}"> </option> -->
+		<!-- 		</select> -->
+
+		<div class="ui-widget">
+			<label for="curso">Curso: </label> 
+			<input id="cursoAutocomplete" th:value="*{{curso.nome}}">
+			<input type="hidden" th:field="*{curso}" />
+		</div>
+
+		<input type="submit" value="Salvar" />
+
 	</form>
 
 
 
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
 
+
+	<script>
+		$("#cursoAutocomplete").autocomplete({
+			source : "/curso/autocomplete",
+			minLength : 2,
+			select : function(event, ui) {
+				event.preventDefault();
+				$("#cursoAutocomplete").val(ui.item.label);
+				$('#curso').val(ui.item.value);
+			},
+			focus : function(event, ui) {
+				event.preventDefault();
+				$("#cursoAutocomplete").val(ui.item.label);
+			}
+		});
+	</script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package br.edu.utfpr.escola.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.utfpr.escola.model.Curso;
+import br.edu.utfpr.escola.model.LabelValue;
 import br.edu.utfpr.escola.repositorio.CursoRepositorio;
 
 @Controller
@@ -27,6 +32,13 @@ public class CursoController {
 		//${dados} será a variável disponível no template thymeleaf
 		model.addAttribute("dados",cursoRepositorio.findAll());
 		return "curso/lista"; //arquivo .html dentro da pasta resources/templates
+	}
+	
+	@GetMapping("/autocomplete")
+	@ResponseBody
+	public List<LabelValue> autocomplete(@RequestParam String term, 
+			Model model){
+		return cursoRepositorio.findByNomeLike("%"+term+"%");
 	}
 	
 	@GetMapping("/novo")
