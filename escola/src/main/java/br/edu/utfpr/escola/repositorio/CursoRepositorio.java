@@ -14,6 +14,19 @@ public interface CursoRepositorio extends JpaRepository<Curso, Long> {
 			+ "(a.codigo, a.nome) "
 			+ "from Curso a "
 			+ "where a.nome like ?1")
-	List<LabelValue> findByNomeLike(String term);
+	List<LabelValue> findByNomeLikeLV(String term);
+	
+	List<Curso> findByNomeLike(String nome);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

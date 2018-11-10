@@ -1,0 +1,31 @@
+a) Possibilitar que alunos façam a 
+matricula em disciplinas dos cursos;
+1 - ADM cria o cadastro do aluno;
+2 - ADM cria o usuário do aluno;
+3 - Aluno entra no sistema e realiza 
+a matricula no curso desejado;
+4 - O Aluno pode escolher qualquer disciplina
+de qualquer curso;
+
+b) Possibilitar que professores 
+realizem o lançamento de notas para os alunos
+em suas disciplinas;
+1 - ADM cadastra o professor 
+no sistema como usuário
+2 - Professor entra no sistema e cadastra a nota
+para o aluno em sua disciplina
+3 - só pode ser lançado notas para 
+alunos matriculados nas disciplinas
+
+
+c) Colocar o botão e input de pesquisa na tela de curso.
+
+
+
+ 
+
+
+
+
+
+

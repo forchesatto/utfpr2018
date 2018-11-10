@@ -34,11 +34,18 @@ public class CursoController {
 		return "curso/lista"; //arquivo .html dentro da pasta resources/templates
 	}
 	
+	@GetMapping("/pesquisa")
+	public String pesquisa(@RequestParam String termo, Model model){
+		model.addAttribute("dados",cursoRepositorio
+				.findByNomeLike("%"+termo+"%"));
+		return "curso/lista";
+	}
+	
 	@GetMapping("/autocomplete")
 	@ResponseBody
 	public List<LabelValue> autocomplete(@RequestParam String term, 
 			Model model){
-		return cursoRepositorio.findByNomeLike("%"+term+"%");
+		return cursoRepositorio.findByNomeLikeLV("%"+term+"%");
 	}
 	
 	@GetMapping("/novo")
