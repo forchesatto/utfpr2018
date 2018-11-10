@@ -1,6 +1,11 @@
 package br.edu.utfpr.escola.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.SortDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +24,9 @@ public class AlunoController {
 	private AlunoRepositorio alunoRepositorio;
 	
 	@GetMapping("/")
-	public String lista(Model model){
+	public String lista(Model model, @SortDefault("nome") Pageable pageable){
 		//${dados} será a variável disponível no template thymeleaf
-		model.addAttribute("dados",alunoRepositorio.findAll());
+		model.addAttribute("dados",alunoRepositorio.findAll(pageable));
 		return "aluno/lista"; //arquivo .html dentro da pasta resources/templates
 	}
 	
@@ -30,7 +35,7 @@ public class AlunoController {
 		model.addAttribute("aluno", new Aluno());
 		return "aluno/formulario";
 	}
-	
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@PostMapping("/salvar")
 	public String salvar(Aluno aluno){
 		alunoRepositorio.save(aluno);
