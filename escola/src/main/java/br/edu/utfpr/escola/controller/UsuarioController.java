@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.utfpr.escola.model.Usuario;
 import br.edu.utfpr.escola.repositorio.PermissaoRepositorio;
@@ -40,8 +39,7 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Usuario usuario, 
-			@RequestParam Long codigoPermissao){
+	public String salvar(Usuario usuario){
 		if(usuario.getPassword().isEmpty()){ 
 			if(usuario.getCodigo() != null){
 				Usuario usuarioAtual = usuarioRepositorio
@@ -51,7 +49,6 @@ public class UsuarioController {
 		} else {
 			usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));	
 		}
-		usuario.addPermissao(permissaoRepositorio.getOne(codigoPermissao));
 		usuarioRepositorio.save(usuario);
 		return "redirect:/usuario/";
 	}

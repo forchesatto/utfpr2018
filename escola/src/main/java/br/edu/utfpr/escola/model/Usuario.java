@@ -34,6 +34,10 @@ public class Usuario implements UserDetails {
 	@ManyToMany(cascade=CascadeType.ALL)
 	private Collection<Permissao> permissoes;
 	
+	public Usuario(){
+		this.permissoes = new HashSet<>();
+	}
+	
 	public void addPermissao(Permissao permissao){
 		if(permissoes == null){
 			permissoes = new HashSet<>();
@@ -103,5 +107,14 @@ public class Usuario implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
+	public Collection<Permissao> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(Collection<Permissao> permissoes) {
+		this.permissoes = permissoes;
+	}
+	
 
 }

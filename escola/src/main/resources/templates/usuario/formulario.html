@@ -25,11 +25,22 @@
 		<input type="password" th:field="*{password}">
 		
 		<label for="permissao">Permissao:</label>
-		<select name="codigoPermissao">
-			<option th:each="permissao: ${permissoes}" 
-					th:text="${permissao.authority}" 
-					th:value="${permissao.codigo}"> </option>
-		</select>
+		
+		<ul>
+			<li th:each="permissao: ${permissoes}">
+				<input type="checkbox" th:name="permissoes"
+					th:value="${permissao.codigo}"
+					th:checked="${usuario.permissoes.contains(permissao)}"
+					th:text="#{__${permissao.authority}__}">
+			</li>
+		</ul>
+		
+		
+<!-- 		<select name="codigoPermissao"> -->
+<!-- 			<option th:each="permissao: ${permissoes}"  -->
+<!-- 					th:text="${permissao.authority}"  -->
+<!-- 					th:value="${permissao.codigo}"> </option> -->
+<!-- 		</select> -->
 	
 		<input type="submit" value="Salvar"/>
 	
