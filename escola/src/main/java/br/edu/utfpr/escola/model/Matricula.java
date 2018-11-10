@@ -5,6 +5,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
@@ -41,6 +42,10 @@ public class Matricula {
 	private Disciplina disciplina;
 
 	private Double nota;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(updatable=false)
+	private Usuario usuario;
 	
 	public Matricula(){
 		
@@ -82,6 +87,14 @@ public class Matricula {
 
 	public void setNota(Double nota) {
 		this.nota = nota;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

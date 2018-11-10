@@ -16,10 +16,14 @@ public class MatriculaServiceImpl implements MatriculaService {
 	@Autowired
 	private MatriculaRepositorio matriculaRepositorio;
 	
+	@Autowired
+	private UsuarioLogado usuarioLogado;
+	
 	@Transactional(readOnly=false, 
 			propagation=Propagation.REQUIRED)
 	@Override
 	public Matricula matricular(Matricula matricula) {
+		matricula.setUsuario(usuarioLogado.getUsuario());
 		return matriculaRepositorio.save(matricula);
 	}
 	
